@@ -4,12 +4,11 @@ RGOADTERM adalah aplikasi terminal untuk Windows yang menyediakan antarmuka desk
 
 ## Unduh dan instal
 
-1. Buka halaman repositori RGOADTERM di GitHub.
-2. Pilih **Releases**.
-3. Buka rilis terbaru, lalu cari bagian **Assets**.
-4. Unduh file installer bernama seperti `RGOADTERM-1.0.0-Setup.exe`. Nomor versi pada nama file dapat berubah pada rilis berikutnya.
-5. Setelah unduhan selesai, buka file `.exe` dan ikuti petunjuk instalasi. Anda dapat memilih lokasi pemasangan. Installer juga dapat membuat pintasan Desktop dan Start Menu.
-6. Jalankan **RGOADTERM** dari pintasan atau menu Start.
+**Versi 1.0.0:** [Unduh RGOADTERM-1.0.0-Setup.exe](https://github.com/FebrianSuban/RGOADTERM/releases/download/v1.0.0/RGOADTERM-1.0.0-Setup.exe)
+
+Jika tautan langsung belum tersedia, buka [halaman Releases](https://github.com/FebrianSuban/RGOADTERM/releases), pilih rilis terbaru, lalu unduh installer dari bagian **Assets**. Tautan unduhan di atas berfungsi setelah file `.exe` diunggah ke Release dengan tag `v1.0.0` dan nama file yang sama.
+
+Setelah unduhan selesai, buka file `.exe` dan ikuti petunjuk instalasi. Anda dapat memilih lokasi pemasangan. Installer juga dapat membuat pintasan Desktop dan Start Menu. Jalankan **RGOADTERM** dari pintasan atau menu Start.
 
 File `.exe` pada Releases adalah **installer**, bukan versi portable. Jangan mengunduh file installer dari sumber selain halaman Releases resmi proyek. Jika bagian **Releases** belum memiliki rilis atau bagian **Assets** belum berisi installer, berarti file unduhan belum dipublikasikan.
 
