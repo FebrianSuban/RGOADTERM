@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>RGOADTERM</title>
+
+    <link
+        rel="stylesheet"
+        href="style.css"
+    >
+
+    <link
+        rel="stylesheet"
+        href="../node_modules/@xterm/xterm/css/xterm.css"
+    >
+</head>
+
+
+<body>
+
+<div class="app">
+
+    <!-- =========================================
+         TITLE BAR
+    ========================================== -->
+
+    <div class="titlebar">
+
+        <div class="brand">
+
+            <div class="logo">
+                &gt;_
+            </div>
+
+            <div class="brand-name">
+                RGOADTERM
+            </div>
+
+            <div class="badge">
+                WINDOWS TERMINAL
+            </div>
+
+        </div>
+
+
+        <div class="window-buttons">
+
+            <button
+                class="window-minimize"
+                id="minimize"
+                title="Minimize"
+                aria-label="Minimize"
+            ></button>
+
+            <button
+                class="window-maximize"
+                id="maximize"
+                title="Maximize"
+                aria-label="Maximize"
+            ></button>
+
+            <button
+                class="window-close"
+                id="close"
+                title="Close"
+                aria-label="Close"
+            ></button>
+
+        </div>
+
+    </div>
+
+
+    <!-- =========================================
+         TOOLBAR
+    ========================================== -->
+
+    <div class="toolbar">
+
+        <!-- NEW TAB -->
+
+        <button
+            class="new-tab"
+            id="new-tab"
+            title="New Tab"
+            aria-label="New Tab"
+        ></button>
+
+
+        <!-- TABS -->
+
+        <div
+            class="tabs"
+            id="tabs"
+        ></div>
+
+
+        <!-- PROFILE -->
+
+        <div class="profile-box">
+
+            <span class="profile-label">
+                SHELL
+            </span>
+
+            <select
+                class="profile-select"
+                id="profile"
+                title="Select Shell"
+            >
+                <option value="powershell">
+                    PowerShell
+                </option>
+
+                <option value="cmd">
+                    Windows CMD
+                </option>
+            </select>
+
+        </div>
+
+
+        <!-- SETTINGS -->
+
+        <button
+            class="settings-button"
+            id="settings-button"
+            title="Settings"
+            aria-label="Settings"
+        ></button>
+
+
+        <div class="toolbar-space"></div>
+
+
+        <!-- CLOCK -->
+
+        <div
+            class="clock"
+            id="clock"
+        >
+            00:00:00
+        </div>
+
+    </div>
+
+
+    <!-- =========================================
+         TERMINAL AREA
+    ========================================== -->
+
+    <div
+        class="terminal-container"
+        id="terminal-container"
+    ></div>
+
+
+    <!-- =========================================
+         STATUS BAR
+    ========================================== -->
+
+    <div class="statusbar">
+
+        <div class="status-online">
+
+            <span class="status-dot"></span>
+
+            <span>
+                TERMINAL
+            </span>
+
+        </div>
+
+
+        <div
+            class="terminal-size"
+            id="terminal-size"
+        >
+            0 × 0
+        </div>
+
+
+        <div class="developer-name">
+            RGOADTERM · Developer:
+            <strong>Febrian Suban</strong>
+        </div>
+
+    </div>
+
+</div>
+
+
+<!-- =========================================
+     SETTINGS OVERLAY
+========================================== -->
+
+<div
+    class="settings-overlay hidden"
+    id="settings-overlay"
+>
+    <div class="settings-panel">
+        <div class="settings-header">
+            <div>
+                <div class="settings-title">RGOADTERM Settings</div>
+                <div class="settings-subtitle">Terminal preferences</div>
+            </div>
+
+            <button
+                class="settings-close"
+                id="settings-close"
+                title="Close Settings"
+                aria-label="Close Settings"
+            ></button>
+        </div>
+
+        <div class="setting-group">
+            <label for="mode-select">APPEARANCE</label>
+            <select class="settings-select" id="mode-select">
+                <option value="dark">Dark</option>
+                <option value="light">Light</option>
+            </select>
+        </div>
+
+        <div class="setting-group">
+            <label for="terminal-layout">TERMINAL LAYOUT</label>
+            <select class="settings-select" id="terminal-layout">
+                <option value="1">1 Pane</option>
+                <option value="2">2 Panes</option>
+                <option value="3">3 Panes</option>
+                <option value="4">4 Panes</option>
+            </select>
+        </div>
+
+        <button
+            class="guide-open-button"
+            id="usage-guide-open"
+            type="button"
+        >
+            Buka Panduan
+        </button>
+
+        <div class="developer-card">
+            <div class="developer-label">DEVELOPER</div>
+            <div class="developer-value">Febrian Suban</div>
+        </div>
+
+        <button
+            class="reset-button"
+            id="reset-settings"
+        >
+            Reset Settings
+        </button>
+    </div>
+</div>
+
+
+<div
+    class="guide-overlay hidden"
+    id="usage-guide-overlay"
+    role="dialog"
+    aria-modal="true"
+    aria-labelledby="usage-guide-title"
+>
+    <div class="guide-panel">
+        <div class="settings-header">
+            <div>
+                <div class="settings-title" id="usage-guide-title">Panduan Penggunaan</div>
+                <div class="settings-subtitle">Workspace, pane, shell, dan shortcut</div>
+            </div>
+
+            <button
+                class="settings-close"
+                id="usage-guide-close"
+                title="Close Guide"
+                aria-label="Close Guide"
+            ></button>
+        </div>
+
+        <section class="usage-guide">
+            <h4>Workspace dan Pane</h4>
+            <ul>
+                <li><strong>+</strong> membuat workspace baru yang memiliki layout dan sesi terminal sendiri.</li>
+                <li>Pilih tab di bar atas untuk berpindah workspace; tombol <strong>×</strong> pada tab menutup workspace tersebut.</li>
+                <li>Pilih <strong>1–4 Pane</strong> di Settings untuk menentukan jumlah terminal pada workspace aktif.</li>
+                <li>Tombol <strong>×</strong> di dalam pane menutup pane itu dan menata ulang pane yang tersisa.</li>
+                <li>Klik atau arahkan kursor ke pane untuk menjadikannya aktif.</li>
+            </ul>
+
+            <h4>Shell dan Scroll</h4>
+            <ul>
+                <li>Pilih <strong>PowerShell</strong> atau <strong>CMD</strong> dari menu SHELL untuk mengganti shell pada pane aktif saja.</li>
+                <li>Scroll output dengan roda mouse atau touchpad. Scrollbar disembunyikan, tetapi scroll tetap aktif.</li>
+                <li><kbd>Ctrl</kbd> + <kbd>C</kbd> mengirim interrupt ke proses yang sedang berjalan di shell aktif.</li>
+            </ul>
+
+            <h4>Shortcut Keyboard</h4>
+            <dl class="shortcut-list">
+                <dt><kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>T</kbd></dt>
+                <dd>Membuat workspace baru.</dd>
+
+                <dt><kbd>Ctrl</kbd> + <kbd>Tab</kbd></dt>
+                <dd>Beralih ke workspace berikutnya.</dd>
+
+                <dt><kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>→</kbd></dt>
+                <dd>Menambah satu pane, maksimal empat.</dd>
+
+                <dt><kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>←</kbd></dt>
+                <dd>Mengurangi satu pane dan mempertahankan pane aktif.</dd>
+
+                <dt><kbd>Ctrl</kbd> + <kbd>+</kbd></dt>
+                <dd>Memperbesar font pane aktif sebesar 2 px. Pada sebagian keyboard, gunakan <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>=</kbd>.</dd>
+
+                <dt><kbd>Ctrl</kbd> + <kbd>-</kbd></dt>
+                <dd>Memperkecil font pane aktif sebesar 2 px.</dd>
+
+                <dt><kbd>Ctrl</kbd> + <kbd>0</kbd></dt>
+                <dd>Mengembalikan font pane aktif ke 14 px.</dd>
+
+                <dt><kbd>Ctrl</kbd> + <kbd>W</kbd></dt>
+                <dd>Menutup pane aktif jika ada beberapa pane; pada layout satu pane, menutup workspace aktif jika masih ada workspace lain.</dd>
+
+                <dt><kbd>Esc</kbd></dt>
+                <dd>Menutup popup Panduan atau Settings yang terbuka.</dd>
+            </dl>
+
+            <h4>Tampilan dan Jendela</h4>
+            <ul>
+                <li>Pilih <strong>Dark</strong> atau <strong>Light</strong> di Settings untuk mengganti tampilan.</li>
+                <li>Tombol di kanan atas digunakan untuk minimize, maximize/restore, dan menutup aplikasi.</li>
+            </ul>
+        </section>
+    </div>
+</div>
+
+
+<!-- =========================================
+     JAVASCRIPT
+========================================== -->
+
+<script src="../node_modules/@xterm/xterm/lib/xterm.js"></script>
+
+<script src="../node_modules/@xterm/addon-fit/lib/addon-fit.js"></script>
+
+<script src="renderer.js"></script>
+
+</body>
+
+</html>
